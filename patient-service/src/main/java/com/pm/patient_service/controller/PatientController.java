@@ -4,6 +4,7 @@ package com.pm.patient_service.controller;
 import com.pm.patient_service.dto.PatientRequestDTO;
 import com.pm.patient_service.dto.PatientResponseDTO;
 import com.pm.patient_service.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class PatientController {
     }
 
     @PostMapping
-    public ResponseEntity<PatientResponseDTO>  savePatients(@RequestBody PatientRequestDTO patientRequestDTO){
+    public ResponseEntity<PatientResponseDTO>  savePatients(@Valid @RequestBody PatientRequestDTO patientRequestDTO){
         PatientResponseDTO patient=patientService.createPatient(patientRequestDTO);
 
         return ResponseEntity.ok().body(patient);
