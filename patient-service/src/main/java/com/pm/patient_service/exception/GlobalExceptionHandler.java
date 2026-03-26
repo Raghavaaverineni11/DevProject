@@ -22,4 +22,14 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.badRequest().body(errors);
     }
-}
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+        public ResponseEntity<Map<String,String>> hanldeEmailAlreadyException(EmailAlreadyExistsException ex){
+
+            Map<String,String> errors=new HashMap<>();
+            errors.put("message","Email address Already Exists");
+
+            return ResponseEntity.badRequest().body(errors);
+        }
+    }
+
